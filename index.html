@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>UNO Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Lilita+One&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="toast"></div><canvas id="bg"></canvas><canvas id="fx"></canvas>
+<section id="menu">
+<i class="fc" style="--c:#ed1c24;--r:-18deg;--d:0s;left:6%;top:10%">7</i>
+<i class="fc" style="--c:#e6a800;--r:14deg;--d:.8s;right:7%;top:14%">+2</i>
+<i class="fc" style="--c:#2e9e4f;--r:12deg;--d:1.6s;left:9%;bottom:12%">⇄</i>
+<i class="fc" style="--c:#0a6fd6;--r:-14deg;--d:2.4s;right:8%;bottom:10%">⛔</i>
+<div class="logo"><div><b>UNO</b></div></div>
+<div class="fan"><i style="--c:#ed1c24;--r:-28deg">⇄</i><i style="--c:#e6a800;--r:-14deg">+2</i><i style="--c:#2e9e4f;--r:0deg">7</i><i style="--c:#0a6fd6;--r:14deg">⛔</i><i style="--c:#1b1220;--r:28deg">+4</i></div>
+<p class="sub2" data-i="sub"></p>
+<button class="play" id="play" data-i="play">▶ PLAY</button>
+<button class="back gear" id="gear1" data-i="settings">⚙️ Settings</button>
+</section>
+<div id="portal"><div class="hole"></div></div>
+<main id="game" hidden>
+<div class="topbar"><button class="back" id="back" data-i="menu">← Menu</button><span class="sp"></span><button class="back" id="undo" data-i="undo">↩ Undo</button><button class="back" id="gear2" aria-label="Settings">⚙️</button></div>
+<div class="logo"><div><b>UNO</b></div></div>
+<p class="tag" data-i="tag"></p>
+<div class="strip" id="strip"></div>
+<div class="grid" id="players"></div>
+<div class="actions">
+<button class="make" id="make" data-i="make">🏆 Make leaderboard</button>
+<button class="reset" id="rand" aria-label="Who starts?">🎲</button>
+<button class="reset" id="reset" data-i="reset">Reset</button>
+</div>
+<details class="hist"><summary><span data-i="hist"></span> · <b id="hc">0</b></summary><ul id="hl"></ul></details>
+<section class="board" id="board"></section>
+</main>
+<div id="modal" hidden><div class="sheet">
+<h3 data-i="settings"></h3>
+<label class="set"><span data-i="sound"></span><input type="checkbox" id="s-sound"></label>
+<label class="set"><span data-i="fx"></span><input type="checkbox" id="s-fx"></label>
+<label class="set"><span data-i="anim"></span><input type="checkbox" id="s-bg"></label>
+<label class="set"><span data-i="low"></span><input type="checkbox" id="s-low"></label>
+<div class="set"><span data-i="lang"></span><select id="s-lang"><option value="en">English</option><option value="uk">Українська</option><option value="de">Deutsch</option><option value="ru">Русский</option></select></div>
+<div class="set"><span data-i="theme"></span><div class="seg" id="s-theme"><button data-t="auto" data-i="auto"></button><button data-t="light" data-i="light"></button><button data-t="dark" data-i="dark"></button></div></div>
+<div class="set col"><span data-i="style"></span><div class="sws" id="s-skin"></div></div>
+<div class="set col"><span data-i="scale"></span><div class="rng"><input type="range" id="s-scale" min="70" max="140" step="5"><b id="v-scale"></b></div></div>
+<label class="set"><span data-i="glass"></span><input type="checkbox" id="s-glass"></label>
+<div class="set col"><span data-i="blur"></span><div class="rng"><input type="range" id="s-gb" min="0" max="40" step="1"><b id="v-gb"></b></div></div>
+<div class="set col"><span data-i="opac"></span><div class="rng"><input type="range" id="s-ga" min="0" max="45" step="1"><b id="v-ga"></b></div></div>
+<div class="set col"><span data-i="shine"></span><div class="rng"><input type="range" id="s-gh" min="0" max="100" step="5"><b id="v-gh"></b></div></div>
+<label class="set"><span data-i="haptic"></span><input type="checkbox" id="s-haptic"></label>
+<label class="set"><span data-i="awake"></span><input type="checkbox" id="s-awake"></label>
+<div class="set"><span data-i="snd"></span><select id="s-snd"><option value="soft">Soft</option><option value="pop">Pop</option><option value="arcade">Arcade</option></select></div>
+<div class="set"><span data-i="quick"></span><div class="qin"><input type="number" id="q0"><input type="number" id="q1"><input type="number" id="q2"></div></div>
+<button class="danger" id="s-clear" data-i="clear"></button>
+<button class="done" id="s-close" data-i="done"></button>
+</div></div>
+<div id="pick" hidden><div class="sheet">
+<h3 data-i="pick"></h3><div class="egrid" id="eg"></div>
+<div class="set"><input id="own" class="own" maxlength="12" data-ip="own"><button class="seg-b" id="ownb" data-i="use"></button></div>
+<div class="set"><button class="seg-b" id="photo" data-i="photo"></button><button class="seg-b" id="noph" data-i="def"></button></div>
+<input type="file" id="file" accept="image/*" hidden>
+<button class="done" id="p-close" data-i="done"></button>
+</div></div>
+<script src="script.js"></script>
+</body>
+</html>
